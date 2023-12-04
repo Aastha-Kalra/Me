@@ -13,7 +13,7 @@ const MenuItem = ({ menu }) => {
         {isHovered ? (
           <motion.div
             initial={{ opacity: 0, x: -25 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 30 }}
             exit={{ opacity: 0, x: -25 }}
             className="absolute rounded-md px-4 py-2 -left-[140px] bg-white after:bg-white after:w-3 after:h-3 after:absolute after:-right-1 after:top-4 after:rotate-45 text-2xl font-semibold"
           >
