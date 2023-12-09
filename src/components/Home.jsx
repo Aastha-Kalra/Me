@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Type from './type'
+import Type from "./type";
 const Home = () => {
   return (
     <section
@@ -17,12 +17,23 @@ const Home = () => {
             </span>
           </h2>
           {/* typewriter */}
-          <h2 className="lg:text-5xl mt-4 text-2xl text-slate-300  flex w-[57%]">
+          <h2 className="lg:text-5xl my-10 text-2xl font-bold text-slate-300  flex w-[57%]">
             And I'm &nbsp;
-            <Type 
-            speed={100}
-            words={["a Frontend developer", "a Freelancer", "a Reactjs developer"]}/>
+            <Type
+              speed={100}
+              words={[
+                "a Frontend developer",
+                "a Freelancer",
+                "a Reactjs developer",
+              ]}
+            />
           </h2>
+          {/* about */}
+          <p className="lg:text-4xl text-slate-200  text-2xl block w-[64%] text-center">
+            A self-taught front-end developer, my passion is to provide well
+            tested and maintainable code, pixel-perfect user interfaces and the
+            best user experience using the latest technologies.
+          </p>
         </div>
         {/* my image */}
         <div className="w-full h-full flex items-start lg:items-center justify-center">

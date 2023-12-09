@@ -26,7 +26,7 @@ const Type = ({ words, speed }) => {
     };
   }, [currentWord, speed, words]);
   return (
-    <span className="tracking-wider text-transparent h-14 bg-gradient-to-r from-green-500 to-yellow-400 bg-clip-text ">
+    <span className="tracking-wider text-transparent h-14 bg-gradient-to-r from-green-500 to-yellow-400 bg-clip-text font-extrabold">
       {currentText}
     </span>
   );
