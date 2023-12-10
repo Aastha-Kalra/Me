@@ -9,9 +9,9 @@ const Home = () => {
       id="home"
       className="flex justify-center items-center flex-col gap-12 relative pt-44"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full ">
         {/* container */}
-        <div className="text-white flex-col flex justify-center items-center w-full gap-4">
+        <div className="text-white flex-col flex justify-center items-center w-full py-2">
           <h2 className="text-3xl lg:text-8xl text-slate-300">
             Hello, It's me
             <span className="block  lg:text-9xl text-white tracking-wider text-4xl mt-4">
@@ -31,21 +31,21 @@ const Home = () => {
             />
           </h2>
           {/* about */}
-          {/* <p className="lg:text-4xl text-slate-200   text-2xl block w-[62%] text-center">
+          <p className="lg:text-4xl text-slate-200   text-2xl block ml-[274px] text-justify">
             A self-taught front-end developer, my passion is to provide well
             tested and maintainable code, pixel-perfect user interfaces and the
             best user experience using the latest technologies.
-          </p> */}
+          </p>
 
           {/* socials */}
-          <div className="flex justify-center items-center gap-14 my-10">
+          <div className="flex justify-start items-start gap-14 my-14 w-full px-64">
             {Socials &&
               Socials.map((i, index) => {
                 return (
                   <motion.a href={i.uril} target="blank">
                     <div
                       key={index}
-                      className="w-full flex justify-center items-center "
+                      className="w-full flex justify-start items-start "
                     >
                       <span className=" border-2 border-green-500 rounded-full hover:scale-90 ease-in transition-all duration-500 p-5 shadow-lg shadow-green-500 cursor-pointer animate-pulse">
                         {" "}
@@ -57,12 +57,15 @@ const Home = () => {
               })}
           </div>
 
-          {/* <div className="flex justify-star items-star w-full px-64">
-            <button className="px-14 py-4 border-2 border-green-500 rounded-md hover:scale-90 ease-in transition-all duration-500 text-4xl w-ful shadow-lg shadow-green-500">Hire Me</button>
-          </div> */}
+
+
+
+          <div className="flex w-full px-64">
+            <button className="px-14 py-4 border-2 border-green-500 rounded-3xl  hover:scale-90 ease-in transition-all duration-500 text-4xl shadow-lg shadow-green-500">Hire Me</button>
+          </div>
         </div>
         {/* my image */}
-        <div className="w-full h-full flex items-start lg:items-center justify-center">
+        {/* <div className="w-full h-full flex items-start lg:items-center justify-center">
           <motion.img
             initial={{ y: 0 }}
             animate={{ y: [-10, 10, -10] }}
@@ -74,7 +77,7 @@ const Home = () => {
             src="https://media.licdn.com/dms/image/D5603AQH93Rhk9Ahg2g/profile-displayphoto-shrink_200_200/0/1684078799996?e=1707350400&v=beta&t=o1Kp4znizyo4HTiRJ142Xr1VHXW8fST9Hkp9PUl_2jA"
             className="w-1/2 rounded-full object-contain shadow-2xl shadow-green-500"
           ></motion.img>
-        </div>
+        </div> */}
       </div>
     </section>
   );
