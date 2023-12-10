@@ -1,13 +1,11 @@
 import {
     FaDiagramProject,
     FaEnvelope,
-    FaFacebookF,
     FaGithub,
     FaHouse,
     FaLinkedinIn,
     FaRenren,
     FaUser,
-    FaYoutube,
   } from "react-icons/fa6";
 //   import {
 //     ChatApp,
@@ -23,29 +21,18 @@ import {
   
   export const Socials = [
     {
-      id: `facebook-${Date.now()}`,
-      Icon: FaFacebookF,
-      uril: "",
-      color: "#1877F2",
-    },
-    {
       id: `linkedin-${Date.now()}`,
-      Icon: FaLinkedinIn,
-      uril: "",
+      icon: FaLinkedinIn,
+      uril: "https://www.linkedin.com/in/aastha-kalra9927/",
       color: "#0072b1",
     },
     {
       id: `github-${Date.now()}`,
-      Icon: FaGithub,
-      uril: "",
+      icon: FaGithub,
+      uril: "https://github.com/Aastha-Kalra",
       color: "#fff",
     },
-    {
-      id: `youtube-${Date.now()}`,
-      Icon: FaYoutube,
-      uril: "",
-      color: "#ff0000",
-    },
+  
   ];
   
   export const Menus = [
