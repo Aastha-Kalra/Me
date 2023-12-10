@@ -1,6 +1,8 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Type from "./type";
+import { Socials } from "./utils/Helper";
 const Home = () => {
   return (
     <section
@@ -17,7 +19,7 @@ const Home = () => {
             </span>
           </h2>
           {/* typewriter */}
-          <h2 className="lg:text-5xl my-10 text-2xl font-bold text-slate-300  flex w-[57%]">
+          <h2 className="lg:text-5xl my-5 text-2xl font-bold text-slate-300  flex w-[57%]">
             And I'm &nbsp;
             <Type
               speed={100}
@@ -29,11 +31,35 @@ const Home = () => {
             />
           </h2>
           {/* about */}
-          <p className="lg:text-4xl text-slate-200  text-2xl block w-[64%] text-center">
+          {/* <p className="lg:text-4xl text-slate-200   text-2xl block w-[62%] text-center">
             A self-taught front-end developer, my passion is to provide well
             tested and maintainable code, pixel-perfect user interfaces and the
             best user experience using the latest technologies.
-          </p>
+          </p> */}
+
+          {/* socials */}
+          <div className="flex justify-center items-center gap-14 my-10">
+            {Socials &&
+              Socials.map((i, index) => {
+                return (
+                  <motion.a href={i.uril} target="blank">
+                    <div
+                      key={index}
+                      className="w-full flex justify-center items-center "
+                    >
+                      <span className=" border-2 border-green-500 rounded-full hover:scale-90 ease-in transition-all duration-500 p-5 shadow-lg shadow-green-500 cursor-pointer animate-pulse">
+                        {" "}
+                        <i.icon size={45} />
+                      </span>
+                    </div>
+                  </motion.a>
+                );
+              })}
+          </div>
+
+          {/* <div className="flex justify-star items-star w-full px-64">
+            <button className="px-14 py-4 border-2 border-green-500 rounded-md hover:scale-90 ease-in transition-all duration-500 text-4xl w-ful shadow-lg shadow-green-500">Hire Me</button>
+          </div> */}
         </div>
         {/* my image */}
         <div className="w-full h-full flex items-start lg:items-center justify-center">
