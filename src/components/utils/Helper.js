@@ -32,6 +32,12 @@ import {
       uril: "https://github.com/Aastha-Kalra",
       color: "#fff",
     },
+    {
+      id: `resume-${Date.now()}`,
+      icon: FaUser,
+      uril: "Aastha's Resume.pdf",
+      color: "#fff",
+    },
   
   ];
   
