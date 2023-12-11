@@ -9,7 +9,11 @@ const Home = () => {
       id="home"
       className="flex justify-center items-center flex-col gap-12 relative pt-44"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-full ">
+      <motion.div 
+       initial={{ scale: 0.4, opacity: 0 }}
+       whileInView={{ scale: 1, opacity: 1 }}
+       transition={{ type: "tween", duration: 0.4 }}
+      className="grid grid-cols-1 lg:grid-cols-2 w-full ">
         {/* container */}
         <div className="text-white flex-col flex justify-center items-center w-full py-2">
           <h2 className="text-3xl lg:text-8xl text-slate-300">
@@ -78,7 +82,7 @@ const Home = () => {
             className="w-1/2 rounded-full object-contain shadow-2xl shadow-green-500"
           ></motion.img>
         </div> */}
-      </div>
+      </motion.div>
     </section>
   );
 };
