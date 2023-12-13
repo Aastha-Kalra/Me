@@ -15,9 +15,9 @@ function App() {
       <Home/>
       <Services/>
       <About/>
-      {/* <Portfolio/> */}
-      <Skills/>
-      <Experience/>
+      <Portfolio/>
+      {/* <Skills/>
+      <Experience/> */}
     </BrowserRouter>
     </div>
   );
