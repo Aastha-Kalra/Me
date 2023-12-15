@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Type from "./type";
+import Type from "./Type";
 import { Socials } from "./utils/Helper";
 import { Link } from "react-scroll";
 const Home = () => {
