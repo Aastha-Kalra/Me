@@ -6,18 +6,28 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Portfolio from "./components/Portfolio";
-
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import ParticlesContainer from "./particles/ParticlesContainer";
 function App() {
   return (
     <div className="min-h-screen bg-black  h-full">
+{/* <ParticlesContainer/> */}
     <BrowserRouter>
+    
+    <ToastContainer/>
+
     <Navbar />
       <Home/>
       <Services/>
       <About/>
       <Portfolio/>
-      {/* <Skills/>
-      <Experience/> */}
+      <Skills/>
+      <Experience/>
+      <Contact/>
+      <Footer/>
     </BrowserRouter>
     </div>
   );
