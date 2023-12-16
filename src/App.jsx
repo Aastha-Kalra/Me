@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="min-h-screen bg-black  h-full">
+    <div className="min-h-screen bg-black w-full overflow-hidden h-full">
       <BrowserRouter>
         <ToastContainer />
         <Navbar />

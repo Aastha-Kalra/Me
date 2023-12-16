@@ -50,13 +50,13 @@ const About = () => {
           initial={{ scale: 0.4, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ type: "tween", duration: 0.4 }}
-          className="w-9/12 text-slate-300 tracking-widest"
+          className="md:w-9/12 px-5 text-slate-300 tracking-widest"
         >
-          <p className="text-4xl font-bold text-green-500">
+          <p className="text-2xl font-bold text-green-500">
             {" "}
             A Frontend Developer trying to do his best.
           </p>
-          <p className="font-sans">
+          <p className="font-sans text-sm">
             <br />
             Hey 👋, I am a Frontend Developer with a passion for building
             beautiful and functional user interfaces. I am a self-taught
