@@ -86,7 +86,7 @@ const Home = () => {
               duration: 2,
               ease: "linear",
             }}
-            src="/src/assets/mee.jpg"
+            src="https://media.licdn.com/dms/image/D5603AQH93Rhk9Ahg2g/profile-displayphoto-shrink_200_200/0/1684078799996?e=1707350400&v=beta&t=o1Kp4znizyo4HTiRJ142Xr1VHXW8fST9Hkp9PUl_2jA"
             className="md:w-1/2 mt-10 rounded-full object-contain shadow-2xl shadow-green-500"
           ></motion.img>
         </div>
