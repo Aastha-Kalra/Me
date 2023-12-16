@@ -17,15 +17,15 @@ const Home = () => {
       >
         {/* container */}
         <div className="text-white flex-col flex justify-center items-center w-full py-2">
-          <h2 className="text-3xl lg:text-8xl text-slate-300">
+          <h2 className="text-3xl xl:text-5xl text-slate-300">
             Hello, It's me
-            <span className="block  lg:text-9xl text-white tracking-wider text-4xl mt-4">
+            <span className="block  lg:text-6xl text-white tracking-wider text-4xl mt-4">
               Aastha Kalra
             </span>
           </h2>
           {/* typewriter */}
-          <h2 className="lg:text-5xl my-5 text-2xl font-bold text-slate-300  flex w-[57%]">
-            And I'm &nbsp;
+          <h2 className="lg:text-5xl my-5 text-2xl font-bold text-slate-300  flex">
+           I'm &nbsp;
             <Type
               speed={100}
               words={[
@@ -36,14 +36,14 @@ const Home = () => {
             />
           </h2>
           {/* about */}
-          <p className="lg:text-4xl text-slate-200   text-2xl block ml-[274px] text-justify">
+          <p className="lg:text-2xl text-slate-200   text-2xl block px-5 xl:ml-[120px] text-justify">
             A self-taught front-end developer, my passion is to provide well
             tested and maintainable code, pixel-perfect user interfaces and the
             best user experience using the latest technologies.
           </p>
 
           {/* socials */}
-          <div className="flex justify-start items-start gap-14 my-14 w-full px-64">
+          <div className="flex justify-start items-start gap-14 my-14 w-full px-5 md:px-32">
             {Socials &&
               Socials.map((i, index) => {
                 return (
@@ -62,7 +62,7 @@ const Home = () => {
               })}
           </div>
 
-          <div className="flex w-full px-64">
+          <div className="flex w-full md:px-32 px-5">
             <Link
               to="contact"
               spy={true}
@@ -75,7 +75,7 @@ const Home = () => {
           </div>
         </div>
         {/* my image */}
-        <div className="w-full h-full flex items-start lg:items-center justify-center">
+        <div className="w-full h-full flex px-5 items-start lg:items-cente justify-center">
           <motion.img
             initial={{ y: 0 }}
             animate={{ y: [-10, 10, -10] }}
@@ -85,7 +85,7 @@ const Home = () => {
               ease: "linear",
             }}
             src="/src/assets/mee.jpg"
-            className="w-1/2 rounded-full object-contain shadow-2xl shadow-green-500"
+            className="md:w-1/2 mt-10 rounded-full object-contain shadow-2xl shadow-green-500"
           ></motion.img>
         </div>
       </motion.div>
