@@ -10,7 +10,7 @@ const Experience = () => {
             alt=""
             className="w-14  -scale-x-110 -rotate-45 "
           />
-          <span className=" mr-10 text-green-500">Work</span>
+          <span className=" md:mr-10 text-green-500">Work</span>
           <span className="flex justify-center items-center">
             <motion.div
               initial={{ scale: 0.4, opacity: 0 }}
@@ -27,22 +27,22 @@ const Experience = () => {
             </motion.div>
           </span>
         </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2  text-slate-300  w-full mt-24">
-          <motion.div className="w-full h-full">
+        <div className="flex lg:flex-row flex-col gap-5  text-slate-300  w-full mt-24">
+          <motion.div className=" w-5/12  flex justify-center items-center">
             <img
               src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png"
               alt=""
-              className=" bg-blend-multiply w-full h-full animate-spin p-44 "
+              className=" bg-blend-multiply animate-spin  w-full"
             />
           </motion.div>
 
-          <div className="text-4xl font-sans w-full py-20">
-            <div className="flex ">
-              <div className="font-bold w-1/2">Oct 2023 - Present</div>
+          <div className="text-2xl font-sans w-full py-20 ">
+            <div className="flex md:flex-row flex-col">
+              <div className="font-bold md:w-1/2">Oct 2023 - Present</div>
 
               <div className="font-extrabold w-full">
                 Frontend Developer
-                <div className="font-normal flex flex-col gap-3 text-3xl mt-2">
+                <div className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
                     AiSenseLLP
                   </span>
@@ -58,12 +58,12 @@ const Experience = () => {
               </div>
             </div>
 
-            <div className="flex  mt-14 w-full">
-              <span className="font-bold w-1/2">Sep 2023 - Oct 2023</span>
+            <div className="flex md:flex-row flex-col mt-14 w-full">
+              <span className="font-bold md:w-1/2">Sep 2023 - Oct 2023</span>
 
               <div className="font-extrabold w-full ">
                 Web Developer
-                <span className="font-normal flex flex-col gap-3 text-3xl mt-2">
+                <span className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
                     Freelancing
                   </span>
@@ -79,11 +79,11 @@ const Experience = () => {
               </div>
             </div>
 
-            <div className="flex  mt-14 w-full">
-              <div className="font-bold w-1/2">May 2023 - Sep 2023</div>
+            <div className="flex md:flex-row flex-col mt-14 w-full">
+              <div className="font-bold md:w-1/2">May 2023 - Sep 2023</div>
               <div className="font-extrabold w-full ">
                 Frontend Developer Intern
-                <div className="font-normal flex flex-col gap-3 text-3xl mt-2">
+                <div className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
                     Leads4Needs
                   </span>
