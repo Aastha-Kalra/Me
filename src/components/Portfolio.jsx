@@ -79,7 +79,7 @@ const Portfolio = () => {
       >
         <span onClick={handleActive1}>
           <button
-            className={` px-10 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
+            className={` px-[74px] py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
               active1
                 ? "text-green-500  outline bg-black"
                 : "text-black bg-slate-400"
@@ -127,7 +127,7 @@ const Portfolio = () => {
         </span>
       </motion.div>
 
-      <div className="grid grid-cols-1  xl:grid-cols-3 gap-10 w-full px-4 xl:px-14 relative">
+      <div className="grid grid-cols-1  xl:grid-cols-3 gap-10 w-full px-3 sm:px-24 xl:px-14 relative">
         {project.map((item, index) => {
           return (
             <div key={index}>

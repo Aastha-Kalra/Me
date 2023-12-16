@@ -29,13 +29,13 @@ const About = () => {
       </div>
 
       {/* about me */}
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
-        <div className="w-full flex justify-center items-center px-8">
+      <div className="flex lg:flex-row flex-col gap-4 w-full">
+        <div className="w-full flex justify-center items-center px-24 md:px-40 lg:px-14">
           <motion.div
             initial={{ scale: 0.4, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ type: "tween", duration: 0.4 }}
-            className="w-full relative rounded-md lg:w-1/2 p-1 bg-gradient-to-br from-green-500 to-green-600"
+            className="w-full relative rounded-md lg:w-96 p-1 bg-gradient-to-br from-green-500 to-green-600"
           >
             <img
               src="https://media.licdn.com/dms/image/D5603AQH93Rhk9Ahg2g/profile-displayphoto-shrink_200_200/0/1684078799996?e=1707350400&v=beta&t=o1Kp4znizyo4HTiRJ142Xr1VHXW8fST9Hkp9PUl_2jA"
@@ -50,13 +50,13 @@ const About = () => {
           initial={{ scale: 0.4, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ type: "tween", duration: 0.4 }}
-          className="md:w-9/12 px-5 text-slate-300 tracking-widest"
+          className=" md:px-28 px-10 lg:px-4 text-slate-300 lg:pr-32 tracking-widest"
         >
           <p className="text-2xl font-bold text-green-500">
             {" "}
             A Frontend Developer trying to do his best.
           </p>
-          <p className="font-sans text-sm">
+          <p className="font-sans text-sm md:text-xl ">
             <br />
             Hey 👋, I am a Frontend Developer with a passion for building
             beautiful and functional user interfaces. I am a self-taught

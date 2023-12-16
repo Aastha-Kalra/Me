@@ -28,7 +28,7 @@ const Experience = () => {
           </span>
         </motion.p>
         <div className="flex lg:flex-row flex-col gap-5  text-slate-300  w-full mt-24">
-          <motion.div className=" w-5/12  flex justify-center items-center">
+          <motion.div className=" xl:w-5/12 hidden lg:flex justify-center items-center">
             <img
               src="https://styles.redditmedia.com/t5_2su6s/styles/communityIcon_4g1uo0kd87c61.png"
               alt=""

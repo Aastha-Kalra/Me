@@ -69,7 +69,7 @@ const Contact = () => {
         />
       </motion.div>
 
-      <div className="w-full h-full text-lg  my-44 flex px-5 gap-4 md:flex-row flex-col">
+      <div className="w-full h-full text-lg  my-44 flex px-5 gap-4 xl:flex-row flex-col">
         <div className="flex flex-col gap-10 w-full md:pl-1 ">
           <div className="flex justify-center items-center gap-10 bg-green-700 py-5 rounded-xl w-full">
             <span className="text-red-800 font-bold ">
@@ -91,10 +91,10 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="text-5xl ">OR</div>
+        <div className="text-5xl text-center">OR</div>
 
         <div className="flex flex-col gap-10 w-full ">
-          <form action="" className="md:pr-28 flex flex-col gap-10 w-full">
+          <form action="" className="xl:pr-28 flex flex-col gap-10 w-full">
             <input
               type="text"
               className="bg-transparent border-2 border-green-500 h-20 rounded-2xl w-full p-4 text-slate-300 focus:outline-none"
