@@ -6,7 +6,7 @@ const Services = () => {
       initial={{ scale: 0.4, opacity: 0 }}
       whileInView={{ scale: 1, opacity: 1 }}
       transition={{ type: "tween", duration: 0.4 }}
-      className="text-3xl mt-16 flex justify-center items-center h-full py-10 text-slate-300 gap-16"
+      className="text-3xl mt-16 flex lg:flex-row flex-col justify-center items-center h-full py-10 text-slate-300 gap-6 xl:px-32"
     >
       <span className="border-2  border-purple-900 shadow-inner shadow-white px-10 py-20 rounded-xl hover:scale-90 ease-in transition-all duration-500 cursor-pointer hover:shadow-green-500 hover:shadow-xl">
         Technical Design

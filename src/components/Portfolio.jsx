@@ -45,13 +45,13 @@ const Portfolio = () => {
       className="text-slate-300 text-4xl flex flex-col gap-24  justify-center items-center my-52 py-14 relative"
       id="portfolio"
     >
-      <motion.p className="text-3xl sm:text-5xl font-bold text-center flex  justify-center items-center ">
+      <motion.p className="text-2xl sm:text-5xl font-bold text-center flex  justify-center items-center ">
         <img
           src="https://www.aimeeprovence.com.au/wp-content/uploads/2018/07/gold-leaf.png"
           alt=""
           className="w-14  -scale-x-110 -rotate-45 "
         />
-        <span className=" mr-5 text-green-500">My Creative</span>
+        <span className=" mr-5 text-green-500 hidden md:block">My Creative</span>
         <span className="flex justify-center items-center">
           <motion.div
             initial={{ scale: 0.4, opacity: 0 }}
@@ -75,7 +75,7 @@ const Portfolio = () => {
         initial={{ scale: 0.4, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ type: "tween", duration: 0.4 }}
-        className="flex gap-10"
+        className="grid grid-cols-2 xl:grid-cols-4 xl:gap-14 gap-4 pr-5 pl-1"
       >
         <span onClick={handleActive1}>
           <button
@@ -91,7 +91,7 @@ const Portfolio = () => {
         </span>
         <span onClick={handleActive2}>
           <button
-            className={` px-10 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
+            className={` px-9 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
               active2
                 ? "text-green-500  outline bg-black"
                 : "text-black bg-slate-400"
@@ -115,19 +115,19 @@ const Portfolio = () => {
         </span>
         <span onClick={handleActive4}>
           <button
-            className={` px-10 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
+            className={` px-9 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
               active4
                 ? "text-green-500  outline bg-black"
                 : "text-black bg-slate-400"
             }`}
             onClick={() => filter("*featured")}
           >
-            * Featured
+            Featured
           </button>
         </span>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full px-64 relative">
+      <div className="grid grid-cols-1  xl:grid-cols-3 gap-10 w-full px-4 xl:px-14 relative">
         {project.map((item, index) => {
           return (
             <div key={index}>
@@ -143,7 +143,7 @@ const Portfolio = () => {
               >
                 <div
                   key={item.id}
-                  className="bg-slate-300 py-7 px-7 rounded-xl w-full flex flex-col justify-center items-center gap-4 h-full"
+                  className="bg-slate-300 py-7 md:px-7 rounded-xl w-full flex flex-col justify-center items-center gap-4 h-full"
                 >
                   <img src={item.imgSrc} alt="" className="w-full h-full" />
                   <span
@@ -169,7 +169,7 @@ const Portfolio = () => {
                     </a>
                   </div>
 
-                  <span className="text-yellow-800 font-sans text-3xl px-5">
+                  <span className="text-yellow-800 font-sans text-xl px-5">
                     {item.about}
                   </span>
                 </div>
