@@ -52,7 +52,8 @@ const Experience = () => {
                     support user interface concepts. Collaborated with UX/UI
                     designers to translate design concepts into functional
                     components. Learn to balance aesthetics with technical
-                    considerations to create seamless user experiences using React.js Tailwind CSS, Formik & Yup .
+                    considerations to create seamless user experiences using
+                    React.js Tailwind CSS, Formik & Yup .
                   </span>
                 </div>
               </div>
@@ -82,14 +83,19 @@ const Experience = () => {
             <div className="flex md:flex-row flex-col mt-14 w-full">
               <div className="font-bold md:w-1/2">May 2023 - Sep 2023</div>
               <div className="font-extrabold w-full ">
-                Frontend Developer Intern
+                ReactJS Developer
                 <div className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
                     Leads4Needs
                   </span>
                   <span>
-                    Working with the development team and contributing quality
-                    code using React.Js, Tailwind CSS, React Icons Library.
+                    Worked closely with other developers to contribute to
+                    ongoing frontend development projects. Take lead in
+                    implementing and maintaining responsive and visually
+                    appealing user interfaces. Collaborated with the team to
+                    implement UI/UX designs and improve user experience. I have
+                    employed Tailwind CSS to streamline the styling process and
+                    create responsive designs effectively
                   </span>
                 </div>
               </div>
