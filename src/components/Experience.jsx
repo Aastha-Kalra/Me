@@ -63,10 +63,10 @@ const Experience = () => {
               <span className="font-bold md:w-1/2">Sep 2023 - Oct 2023</span>
 
               <div className="font-extrabold w-full ">
-                Web Developer
+                Web Designer
                 <span className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
-                    Freelancing
+                    Synthix
                   </span>
                   <span>
                     Reviewing application requirements and interface designs.
@@ -81,9 +81,9 @@ const Experience = () => {
             </div>
 
             <div className="flex md:flex-row flex-col mt-14 w-full">
-              <div className="font-bold md:w-1/2">May 2023 - Sep 2023</div>
+              <div className="font-bold md:w-1/2">Jan 2023 - Sep 2023</div>
               <div className="font-extrabold w-full ">
-                ReactJS Developer
+                Frontend Developer
                 <div className="font-normal flex flex-col gap-3 text-xl mt-2">
                   <span className="font-semibold text-green-400">
                     Leads4Needs
