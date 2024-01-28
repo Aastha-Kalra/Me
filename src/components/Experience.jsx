@@ -37,7 +37,7 @@ const Experience = () => {
           </motion.div>
 
           <div className="text-2xl font-sans w-full py-20 ">
-            <div className="flex md:flex-row flex-col">
+            {/* <div className="flex md:flex-row flex-col">
               <div className="font-bold md:w-1/2">Oct 2023 - Present</div>
 
               <div className="font-extrabold w-full">
@@ -57,10 +57,10 @@ const Experience = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex md:flex-row flex-col mt-14 w-full">
-              <span className="font-bold md:w-1/2">Sep 2023 - Oct 2023</span>
+              <span className="font-bold md:w-1/2">July 2023 - Oct  2023</span>
 
               <div className="font-extrabold w-full ">
                 Web Designer
@@ -81,7 +81,7 @@ const Experience = () => {
             </div>
 
             <div className="flex md:flex-row flex-col mt-14 w-full">
-              <div className="font-bold md:w-1/2">Jan 2023 - Sep 2023</div>
+              <div className="font-bold md:w-1/2">Jan 2023 - July 2023</div>
               <div className="font-extrabold w-full ">
                 Frontend Developer
                 <div className="font-normal flex flex-col gap-3 text-xl mt-2">
