@@ -38,7 +38,7 @@ const About = () => {
             className="w-full relative rounded-md lg:w-96 p-1 bg-gradient-to-br from-green-500 to-green-600"
           >
             <img
-              src="https://media.licdn.com/dms/image/D5603AQH93Rhk9Ahg2g/profile-displayphoto-shrink_200_200/0/1684078799996?e=1707350400&v=beta&t=o1Kp4znizyo4HTiRJ142Xr1VHXW8fST9Hkp9PUl_2jA"
+              src="Images/me.jpeg"
               alt=""
               className="w-full rounded-md h-auto object-contain"
             />
