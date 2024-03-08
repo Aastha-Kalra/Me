@@ -9,12 +9,12 @@ import {
 } from "react-icons/fa6";
 import { GrUserExpert } from "react-icons/gr";
 export const Socials = [
-  {
-    id: `linkedin-${Date.now()}`,
-    icon: FaLinkedinIn,
-    uril: "https://www.linkedin.com/in/aastha-kalra9927/",
-    color: "#0072b1",
-  },
+  // {
+  //   id: `linkedin-${Date.now()}`,
+  //   icon: FaLinkedinIn,
+  //   uril: "https://www.linkedin.com/in/aastha-kalra9927/",
+  //   color: "#0072b1",
+  // },
   {
     id: `github-${Date.now()}`,
     icon: FaGithub,
