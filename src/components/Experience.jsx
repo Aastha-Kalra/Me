@@ -81,7 +81,7 @@ const Experience = () => {
             </div> */}
 
             <div className="flex md:flex-row flex-col mt-14 w-full">
-              <div className="font-bold md:w-1/2">July 2023 - Feb 2024</div>
+              <div className="font-bold md:w-1/2">July 2023 - Jan 2024</div>
               <div className="font-extrabold w-full ">
                 Frontend Developer
                 <div className="font-normal flex flex-col gap-3 text-xl mt-2">
