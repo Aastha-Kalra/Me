@@ -1,137 +1,313 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { CgMail } from "react-icons/cg";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedinIn, FaGithub, FaCopy, FaCheck, FaPaperPlane } from "react-icons/fa6";
+import { HiSparkles } from "react-icons/hi2";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/config";
 import { toast } from "react-toastify";
+import CardTilt from "./CardTilt";
+import confetti from "canvas-confetti";
 
 const Contact = () => {
   const [input, setInput] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const sendMessage = () => {
-    if (
-      (input.email === null || input.email === "") ||
-      (input.name === null || input.name === "") ||
-      (input.message === null || input.message === "")
-    ) {
-      toast.error("Please enter your details", {
-        position: "top-left",
-      });
-    } else {
-      addDoc(collection(db, "messages"), { ...input })
-        .then(
-          toast.success("Message Sent Successfully", {
-            position: "top-left",
-          }),
+  const copyEmail = () => {
+    navigator.clipboard.writeText("aasthakalra2004@gmail.com");
+    setCopied(true);
+    toast.info("Email copied to clipboard!", { position: "bottom-right", theme: "dark" });
+    setTimeout(() => setCopied(false), 2500);
+  };
 
-          setInput({
-            name: "",
-            email: "",
-            message: "",
-          })
-        )
-        .catch((err) => {
-          toast.warning(err);
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    if (!input.name.trim() || !input.email.trim() || !input.message.trim()) {
+      toast.error("Please fill in your name, email, and message.", {
+        position: "bottom-right",
+        theme: "dark",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Check if Firebase is properly configured
+      const isFirebaseConfigured = !!import.meta.env.VITE_APP_FIREBASE_PROJECT_ID;
+
+      if (isFirebaseConfigured) {
+        await addDoc(collection(db, "messages"), {
+          ...input,
+          createdAt: new Date().toISOString(),
         });
+        toast.success("Message sent successfully! I'll get back to you soon.", {
+          position: "bottom-right",
+          theme: "dark",
+        });
+      } else {
+        // Fallback gracefully opening mailto client if backend keys aren't loaded
+        const mailtoUrl = `mailto:aasthakalra2004@gmail.com?subject=${encodeURIComponent(
+          input.subject || `Message from ${input.name}`
+        )}&body=${encodeURIComponent(
+          `Name: ${input.name}\nEmail: ${input.email}\n\nMessage:\n${input.message}`
+        )}`;
+        window.open(mailtoUrl, "_blank");
+        toast.success("Opening your email client to send message...", {
+          position: "bottom-right",
+          theme: "dark",
+        });
+      }
+
+      // Celebrate
+      try {
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.7 },
+          colors: ["#2563EB", "#38BDF8", "#60A5FA", "#FFFFFF"],
+        });
+      } catch (err) {}
+
+      setInput({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error("Could not send directly. Opening your default email client...", {
+        position: "bottom-right",
+        theme: "dark",
+      });
+      window.location.href = `mailto:aasthakalra2004@gmail.com?subject=Contact%20from%20Portfolio&body=${encodeURIComponent(
+        input.message
+      )}`;
+    } finally {
+      setLoading(false);
     }
   };
-  return (
-    <div
-      className="w-full h-full text-slate-300 text-5xl pt-64 pb-24 "
-      id="contact"
-    >
-      <motion.div
-        initial={{ scale: 0.4, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.4, opacity: 0 }}
-        className="flex justify-center items-center text-green-500"
-      >
-        <img
-          src="https://www.aimeeprovence.com.au/wp-content/uploads/2018/07/gold-leaf.png"
-          alt=""
-          className="w-14  -scale-x-110 -rotate-45 "
-        />
-        Contact Me
-        <img
-          src="https://www.aimeeprovence.com.au/wp-content/uploads/2018/07/gold-leaf.png"
-          alt=""
-          className="w-14  rotate-45 "
-        />
-      </motion.div>
 
-      <div className="w-full h-full text-lg  my-44 flex px-5 gap-4 xl:flex-row flex-col">
-        <div className="flex flex-col gap-10 w-full md:pl-1 ">
-          <div className="flex justify-center items-center gap-10 bg-green-700 py-5 rounded-xl w-full">
-            <span className="text-red-800 font-bold ">
-              <CgMail size={60} />
-            </span>
-            <span>aasthakalra2004@gmail.com</span>
+  return (
+    <section id="contact" className="py-10 sm:py-14 md:py-20 lg:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-3 sm:mb-4">
+            <HiSparkles size={14} />
+            <span>Start A Conversation</span>
           </div>
-          <div className="flex justify-center items-center gap-10 bg-green-700 py-5 rounded-xl">
-            <span className="text-blue-900 font-bold ">
-              <FaLinkedin size={60} />
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4">
+            Let's Build Something{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300">
+              Exceptional Together
             </span>
-            <span>https://www.linkedin.com/in/aastha-kalra9927/</span>
-          </div>
-          <div className="flex justify-center items-center gap-10 bg-green-700 py-5 rounded-xl">
-            <span className="text-black font-bold ">
-              <FaGithub size={60} />
-            </span>
-            <span>https://github.com/Aastha-Kalra</span>
-          </div>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base md:text-lg font-normal">
+            Have a project in mind, an engineering role open, or want to discuss full-stack & AI architecture? Reach out directly.
+          </p>
         </div>
 
-        <div className="text-5xl text-center">OR</div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
+          {/* Direct Channels Column */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 space-y-4 sm:space-y-6"
+          >
+            {/* Primary Email Card with Copy Button */}
+            <CardTilt maxTilt={8}>
+              <div className="glass-card rounded-2xl p-6 sm:p-7 border border-blue-500/25 hover:border-cyan-400/50 shadow-lg hover:shadow-glow-sm transition-all duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/25 border border-blue-500/35 flex items-center justify-center text-cyan-300">
+                    <FaEnvelope size={20} />
+                  </div>
+                  <button
+                    onClick={copyEmail}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-blue-950/80 border border-blue-500/40 text-slate-200 hover:text-white hover:border-cyan-400/60 transition-all cursor-pointer"
+                    title="Copy email to clipboard"
+                  >
+                    {copied ? (
+                      <>
+                        <FaCheck size={12} className="text-cyan-400" />
+                        <span className="text-cyan-400 font-semibold">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <FaCopy size={12} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <h3 className="font-display text-lg font-bold text-white mb-1">Direct Email</h3>
+                <p className="text-xs sm:text-sm text-slate-300 mb-3 font-normal">Response usually within 24 hours</p>
+                <a
+                  href="mailto:aasthakalra2004@gmail.com"
+                  className="text-base sm:text-lg font-mono font-semibold text-cyan-300 hover:text-white break-all transition-colors"
+                >
+                  aasthakalra2004@gmail.com
+                </a>
+              </div>
+            </CardTilt>
 
-        <div className="flex flex-col gap-10 w-full ">
-          <form action="" className="xl:pr-28 flex flex-col gap-10 w-full">
-            <input
-              type="text"
-              className="bg-transparent border-2 border-green-500 h-20 rounded-2xl w-full p-4 text-slate-300 focus:outline-none"
-              value={input.name}
-              name="name"
-              onChange={handleInput}
-              placeholder="Your Name"
-            />
-            <input
-              type="email"
-              className="bg-transparent border-2 border-green-500 h-20 rounded-2xl w-full p-4 text-slate-300 focus:outline-none"
-              value={input.email}
-              name="email"
-              onChange={handleInput}
-              placeholder="Your Email"
-            />
-            <textarea
-              type="text"
-              name="message"
-              className="bg-transparent border-2 border-green-500 h-96 rounded-2xl w-full p-4 text-slate-300 focus:outline-none"
-              value={input.message}
-              onChange={handleInput}
-              placeholder="Your Message"
-            />
-            <div>
-              <button
-                type="button"
-                className="bg-green-800 px-20 py-7 rounded-3xl hover:bg-green-600 shadow-xl shadow-green-500 focus:outline-none"
-                onClick={sendMessage}
+            {/* LinkedIn Card */}
+            <CardTilt maxTilt={8}>
+              <a
+                href="https://www.linkedin.com/in/aastha-kalra9927/"
+                target="_blank"
+                rel="noreferrer"
+                className="block"
               >
-                Send
-              </button>
+                <div className="glass-card rounded-2xl p-6 sm:p-7 border border-blue-500/20 hover:border-cyan-400/50 shadow-lg hover:shadow-glow-sm transition-all duration-300 group">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-600/25 border border-blue-500/35 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform">
+                      <FaLinkedinIn size={22} />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        LinkedIn Profile
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 font-normal">Connect for career opportunities</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </CardTilt>
+
+            {/* GitHub Card */}
+            <CardTilt maxTilt={8}>
+              <a
+                href="https://github.com/Aastha-Kalra"
+                target="_blank"
+                rel="noreferrer"
+                className="block"
+              >
+                <div className="glass-card rounded-2xl p-6 sm:p-7 border border-blue-500/20 hover:border-cyan-400/50 shadow-lg hover:shadow-glow-sm transition-all duration-300 group">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-600/25 border border-blue-500/35 flex items-center justify-center text-slate-100 group-hover:scale-110 transition-transform">
+                      <FaGithub size={22} />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        GitHub Repositories
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 font-normal">Explore open source code & commits</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </CardTilt>
+          </motion.div>
+
+          {/* Interactive Form Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7"
+          >
+            <div className="glass-card rounded-2xl p-6 sm:p-9 border border-blue-500/25 shadow-xl">
+              <h3 className="font-display text-2xl font-bold text-white mb-2">Send A Message</h3>
+              <p className="text-slate-300 text-sm sm:text-base mb-6 sm:mb-8 font-normal">
+                Fill out the form below and it will be delivered directly to my inbox.
+              </p>
+
+              <form onSubmit={sendMessage} className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div>
+                    <label className="block text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={input.name}
+                      onChange={handleInput}
+                      placeholder="Jane Doe"
+                      className="w-full px-4 py-3.5 rounded-xl bg-[#0A0F1F]/90 border border-blue-500/30 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={input.email}
+                      onChange={handleInput}
+                      placeholder="jane@example.com"
+                      className="w-full px-4 py-3.5 rounded-xl bg-[#0A0F1F]/90 border border-blue-500/30 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    Subject (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={input.subject}
+                    onChange={handleInput}
+                    placeholder="Project Inquiry / Job Opportunity"
+                    className="w-full px-4 py-3.5 rounded-xl bg-[#0A0F1F]/90 border border-blue-500/30 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={5}
+                    value={input.message}
+                    onChange={handleInput}
+                    placeholder="Tell me about your project, timeline, or position..."
+                    className="w-full px-4 py-3.5 rounded-xl bg-[#0A0F1F]/90 border border-blue-500/30 text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/50 transition-all resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:brightness-110 shadow-glow-md disabled:opacity-50 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  {loading ? (
+                    <span>Sending...</span>
+                  ) : (
+                    <>
+                      <span>Transmit Message</span>
+                      <FaPaperPlane size={14} />
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
-          </form>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,184 +1,184 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ProjectsData } from "./utils/Helper";
-import { FaGithub, FaEye } from "react-icons/fa6";
+import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { HiSparkles } from "react-icons/hi2";
+import CardTilt from "./CardTilt";
+import confetti from "canvas-confetti";
+
+const categories = ["All", "Featured", "Full Stack", "SaaS Products"];
+
 const Portfolio = () => {
-  const [active1, setActive1] = useState(true);
-  const [active2, setActive2] = useState(false);
-  const [active3, setActive3] = useState(false);
-  const [active4, setActive4] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const handleActive1 = () => {
-    setActive1(true);
-    setActive2(false);
-    setActive3(false);
-    setActive4(false);
-  };
-
-  const handleActive2 = () => {
-    setActive1(false);
-    setActive2(true);
-    setActive3(false);
-    setActive4(false);
-  };
-  const handleActive3 = () => {
-    setActive1(false);
-    setActive2(false);
-    setActive3(true);
-    setActive4(false);
-  };
-  const handleActive4 = () => {
-    setActive1(false);
-    setActive2(false);
-    setActive3(false);
-    setActive4(true);
-  };
-  const [project, setProject] = useState(ProjectsData);
-  const filter = (categorisedItem) => {
-    const updatedProjects = ProjectsData.filter((curItem) => {
-      return curItem.category === categorisedItem;
-    });
-    setProject(updatedProjects);
-  };
-  return (
-    <div
-      className="text-slate-300 text-4xl flex flex-col gap-24  justify-center items-center my-52 py-14 relative"
-      id="portfolio"
-    >
-      <motion.p className="text-2xl sm:text-5xl font-bold text-center flex  justify-center items-center ">
-        <img
-          src="https://www.aimeeprovence.com.au/wp-content/uploads/2018/07/gold-leaf.png"
-          alt=""
-          className="w-14  -scale-x-110 -rotate-45 "
-        />
-        <span className=" mr-5 text-green-500 hidden md:block">My Creative</span>
-        <span className="flex justify-center items-center">
-          <motion.div
-            initial={{ scale: 0.4, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ type: "tween", duration: 0.4 }}
-            className="flex justify-around items-center"
-          >
-            <p className=" text-green-500">Portfolio</p>
-          </motion.div>
-
-          <p className="ml-3 text-green-500">Section</p>
-          <img
-            src="https://www.aimeeprovence.com.au/wp-content/uploads/2018/07/gold-leaf.png"
-            alt=""
-            className="w-14 rotate-45"
-          />
-        </span>
-      </motion.p>
-
-      <motion.div
-        initial={{ scale: 0.4, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ type: "tween", duration: 0.4 }}
-        className="grid grid-cols-2 xl:grid-cols-4 xl:gap-14 gap-4 pr-5 pl-1"
-      >
-        <span onClick={handleActive1}>
-          <button
-            className={` px-[74px] py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
-              active1
-                ? "text-green-500  outline bg-black"
-                : "text-black bg-slate-400"
-            }`}
-            onClick={() => setProject(ProjectsData)}
-          >
-            All
-          </button>
-        </span>
-        <span onClick={handleActive2}>
-          <button
-            className={` px-9 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
-              active2
-                ? "text-green-500  outline bg-black"
-                : "text-black bg-slate-400"
-            }`}
-            onClick={() => filter("Frontend")}
-          >
-            Frontend
-          </button>
-        </span>
-        <span onClick={handleActive3}>
-          <button
-            className={` px-10 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
-              active3
-                ? "text-green-500  outline bg-black"
-                : "text-black bg-slate-400"
-            }`}
-            onClick={() => filter("ReactJs")}
-          >
-            ReactJs
-          </button>
-        </span>
-        <span onClick={handleActive4}>
-          <button
-            className={` px-9 py-4 rounded-lg  hover:bg-black hover:outline hover:text-green-500 hover:transition-all hover:duration-500 ${
-              active4
-                ? "text-green-500  outline bg-black"
-                : "text-black bg-slate-400"
-            }`}
-            onClick={() => filter("*featured")}
-          >
-            Featured
-          </button>
-        </span>
-      </motion.div>
-
-      <div className="grid grid-cols-1  xl:grid-cols-3 gap-10 w-full px-3 sm:px-24 xl:px-14 relative">
-        {project.map((item, index) => {
+  const filteredProjects =
+    activeCategory === "All"
+      ? ProjectsData
+      : ProjectsData.filter((p) => {
+        if (activeCategory === "Featured") return p.category.includes("Featured");
+        if (activeCategory === "Full Stack")
+          return p.category.includes("Full Stack") || p.tags.includes("Full Stack");
+        if (activeCategory === "SaaS Products")
           return (
-            <div key={index}>
+            p.badge.toLowerCase().includes("saas") ||
+            p.tags.some((t) => t.toLowerCase().includes("saas"))
+          );
+        return p.category.toLowerCase().includes(activeCategory.toLowerCase());
+      });
+
+  const handleLaunch = () => {
+    try {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.8 },
+        colors: ["#2563EB", "#38BDF8", "#60A5FA", "#FFFFFF"],
+      });
+    } catch (e) {
+      // safe fallback
+    }
+  };
+
+  return (
+    <section id="portfolio" className="py-10 sm:py-14 md:py-20 lg:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider mb-3 sm:mb-4">
+            <HiSparkles size={14} />
+            <span>Proven Delivery</span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4">
+            Featured{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300">
+              Projects & Systems
+            </span>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base md:text-lg font-normal">
+            Live production websites, scalable SaaS products, full-stack architectures, and robust API backends.
+          </p>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-8 sm:mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === cat
+                ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-glow-sm"
+                : "glass-card text-slate-200 hover:text-white hover:border-blue-500/50"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid with 3D Tilt */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+          <AnimatePresence>
+            {filteredProjects.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ y: 0 }}
-                whileInView={{ y: [-10, 10, -10] }}
-                transition={{
-                  repeatDelay: 0.5,
-                  duration: 2,
-                  ease: "linear",
-                }}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div
-                  key={item.id}
-                  className="bg-slate-300 py-7 md:px-7 rounded-xl w-full flex flex-col justify-center items-center gap-4 h-full"
-                >
-                  <img src={item.imgSrc} alt="" className="w-full h-full" />
-                  <span
-                    className="-mt-10
-                   w-14 bg-slate-300 h-7 flex justify-center items-center text-black  "
-                  >
-                    <span className="bg-slate-300 rounded-t-full p-7">
-                      {item.category}
-                    </span>
-                  </span>
-                  <div className="flex text-black  justify-around w-full ">
-                    <a target="blank" href={item.gitURL}>
-                      <FaGithub />
-                    </a>
+                <CardTilt maxTilt={6} className="h-full">
+                  <div className="glass-card rounded-2xl overflow-hidden border border-blue-500/25 hover:border-cyan-400/50 shadow-lg hover:shadow-glow-md flex flex-col justify-between h-full group transition-all duration-300">
+                    <div>
+                      {/* Image Preview with Overlay */}
+                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0A0F1F]">
+                        <img
+                          src={item.imgSrc}
+                          alt={item.name}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = "/Images/geogreen.jpg";
+                          }}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1F] via-[#0A0F1F]/40 to-transparent" />
 
-                    <p className="text-green-600  font-extrabold">
-                      {" "}
-                      {item.name}
-                    </p>
+                        {/* Top Badges */}
+                        <div className="absolute top-4 left-4 right-4 flex justify-between items-center pointer-events-none">
+                          <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[#0A0F1F]/90 backdrop-blur-md border border-cyan-400/50 text-cyan-300 shadow-sm">
+                            {item.badge}
+                          </span>
+                          <span className="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-blue-900/90 backdrop-blur-md border border-blue-500/40 text-slate-100">
+                            {item.category}
+                          </span>
+                        </div>
+                      </div>
 
-                    <a target="blank" href={item.live}>
-                      <FaEye />
-                    </a>
+                      {/* Content Area */}
+                      <div className="p-6 sm:p-8">
+                        <div className="flex items-center justify-between gap-3 mb-3">
+                          <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                            {item.name}
+                          </h3>
+                        </div>
+
+                        {/* What it solves callout */}
+                        {item.problemSolves && (
+                          <div className="mb-4 px-3.5 py-2.5 rounded-xl bg-blue-950/60 border border-cyan-500/30 text-xs sm:text-sm flex flex-col md:flex-row items-start gap-2 text-slate-100 font-medium">
+                            <span className="font-mono font-bold text-cyan-400 shrink-0">Problem Solved:</span>
+                            <span className="leading-relaxed">{item.problemSolves}</span>
+                          </div>
+                        )}
+
+                        <p className="text-slate-200 text-sm sm:text-[15px] leading-relaxed mb-6 font-normal">
+                          {item.about}
+                        </p>
+
+                        {/* Tech Stack Pills */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {item.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-blue-950/70 border border-blue-500/30 text-slate-200"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Action Footer */}
+                    <div className="px-6 sm:px-8 pb-6 pt-3 flex items-center justify-between border-t border-slate-800">
+                      <a
+                        href={item.gitURL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white transition-colors"
+                      >
+                        <FaGithub size={17} />
+                        <span>Source Code</span>
+                      </a>
+
+                      <a
+                        href={item.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={handleLaunch}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 shadow-glow-sm hover:shadow-glow-md active:scale-95 transition-all"
+                      >
+                        <span>Live Preview</span>
+                        <FaArrowUpRightFromSquare size={12} />
+                      </a>
+                    </div>
                   </div>
-
-                  <span className="text-yellow-800 font-sans text-xl px-5">
-                    {item.about}
-                  </span>
-                </div>
+                </CardTilt>
               </motion.div>
-            </div>
-          );
-        })}
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

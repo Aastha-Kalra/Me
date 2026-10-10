@@ -8,54 +8,64 @@ import {
   FaUser,
 } from "react-icons/fa6";
 import { GrUserExpert } from "react-icons/gr";
+
 export const Socials = [
-  // {
-  //   id: `linkedin-${Date.now()}`,
-  //   icon: FaLinkedinIn,
-  //   uril: "https://www.linkedin.com/in/aastha-kalra9927/",
-  //   color: "#0072b1",
-  // },
   {
-    id: `github-${Date.now()}`,
+    id: "linkedin",
+    name: "LinkedIn",
+    icon: FaLinkedinIn,
+    uril: "https://www.linkedin.com/in/aastha-kalra9927/",
+    color: "#38BDF8",
+  },
+  {
+    id: "github",
+    name: "GitHub",
     icon: FaGithub,
     uril: "https://github.com/Aastha-Kalra",
-    color: "#fff",
+    color: "#F8FAFC",
+  },
+  {
+    id: "email",
+    name: "Email",
+    icon: FaEnvelope,
+    uril: "mailto:aasthakalra2004@gmail.com",
+    color: "#3B82F6",
   },
 ];
 
 export const Menus = [
   {
-    id: `home-${Date.now()}`,
+    id: "home",
     Icon: FaHouse,
     uri: "home",
     name: "Home",
   },
   {
-    id: `about-${Date.now()}`,
+    id: "about",
     Icon: FaUser,
     uri: "about",
     name: "About",
   },
   {
-    id: `projects-${Date.now()}`,
-    Icon: FaDiagramProject,
-    uri: "portfolio",
-    name: "Portfolio",
-  },
-  {
-    id: `skills-${Date.now()}`,
+    id: "skills",
     Icon: FaRenren,
     uri: "skills",
     name: "Skills",
   },
   {
-    id: `experience-${Date.now()}`,
+    id: "projects",
+    Icon: FaDiagramProject,
+    uri: "portfolio",
+    name: "Projects",
+  },
+  {
+    id: "experience",
     Icon: GrUserExpert,
     uri: "experience",
     name: "Experience",
-  }, 
+  },
   {
-    id: `contact-${Date.now()}`,
+    id: "contact",
     Icon: FaEnvelope,
     uri: "contact",
     name: "Contact",
@@ -64,112 +74,68 @@ export const Menus = [
 
 export const ProjectsData = [
   {
-    id: `goals-${Date.now()}`,
-    name: "My Daily Goals",
-    category: "*featured",
-    imgSrc: "https://aastha-kalra.netlify.app/dailyGoals.jpg",
-    gitURL: "https://github.com/Aastha-Kalra/My-Daily-Goals",
-    live: "https://my-daily-goal.netlify.app/",
+    id: "cardora",
+    name: "Cardora",
+    category: "Featured",
+    badge: "Production SaaS",
+    imgSrc: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1000",
+    gitURL: "https://github.com/Aastha-kalra",
+    live: "https://cardora.ca",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Typesense Search", "SaaS Marketplace", "REST APIs"],
+    problemSolves: "Streamlines pre-owned vehicle discovery, trade-ins, and financing in Ontario.",
     about:
-      " My Daily Goals app, built with React.js and Firebase, offers secure user management, empowering users with personalized experiences.",
+      "Modern automotive dealership & marketplace SaaS. Solves traditional car buying friction by providing lightning-fast vehicle search via Typesense, an instant under-2-minute trade-in valuation engine, automated financing pre-qualification without credit score impact, and dynamic payment estimation.",
   },
   {
-    id: `star-${Date.now()}`,
-    name: "5 Star Recipes",
-    category: "*featured",
-    imgSrc: "https://i.pinimg.com/originals/b7/23/19/b723195d11e17eff474399584af601ee.jpg",
-    gitURL: "https://github.com/Aastha-Kalra/5-Star-Recipe",
-    live: "https://5star-recipe.netlify.app/",
+    id: "grcars",
+    name: "GRCars (Gedi Route)",
+    category: "Featured",
+    badge: "Automotive Platform",
+    imgSrc: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000",
+    gitURL: "https://github.com/Aastha-kalra",
+    live: "https://grcars.ca",
+    tags: ["Next.js", "Tailwind CSS", "Inventory Engine", "Financing APIs", "Full Stack", "Database"],
+    problemSolves: "Automates vehicle discovery, instant financing pre-qualification, and trade-in appraisals.",
     about:
-      "Discover 5-star ReactJS recipe app, effortlessly explore flavors, detailed ingredients, step-by-step videos, and instant access.",
+      "Full-scale Canadian automotive commerce platform ('Right Car. Right Price'). Solves opaque dealer pricing and slow financing through instant multi-category inventory filtering (SUVs, Sedans, Commercial EVs, Hybrids), custom bi-weekly loan calculator & credit-safe pre-qualification, 2-minute sell/trade offers, and wheels & rims ecosystem integration.",
   },
   {
-    id: `saas-${Date.now()}`,
-    name: "SaaS Landing Page",
-    category: "Frontend",
-    imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRjAD6V1CjhfTIXFJsGUdmCrHF6mgM6nJABkHFnWYwbDjxVHGyXDVw0k5CRoHo9TqwPGI&usqp=CAU",
-    gitURL: "https://github.com/Aastha-Kalra/SaaS-Landing-Page",
-    live: "https://solar-enegry.netlify.app/",
+    id: "goldcash",
+    name: "GoldCash",
+    category: "Featured",
+    badge: "Digital Gold",
+    imgSrc: "https://images.unsplash.com/photo-1621504450181-5d356f61d307?auto=format&fit=crop&q=80&w=1000",
+    gitURL: "https://github.com/Aastha-kalra",
+    live: "https://goldcash.io",
+    tags: ["Next.js", "Node.js", "Wallet Engine", "Cashfree & Stripe", "RESTful APIs", "MongoDB"],
+    problemSolves: "Drives user retention and gamified rewards for digital gold asset commerce.",
     about:
-      "React-powered Solar Energy landing page with detailed CSS, seamless navbar animation and immersive experience on any device.",
+      "Rewards engine and digital gold platform. Solves user acquisition & retention challenges by engineering an interactive spin-and-win algorithm with 24-hour cooldown logic, an internal ledger wallet balance system, and seamless dual payment gateways (Cashfree & Stripe) with multi-country currency support.",
   },
-
-
   {
-    id: `brand-${Date.now()}`,
-    name: "Kalra Brandies",
-    category: "*featured",
-    imgSrc: "https://www.similarweb.com/blog/wp-content/uploads/2022/06/BLOG-THUMBNAIL-2-2.png",
-    gitURL: "https://github.com/Aastha-Kalra/KalraBrandies",
-    live: "https://shoppingcart99.netlify.app/",
+    id: "forteh",
+    name: "Forteh",
+    category: "Full Stack",
+    badge: "Job Marketplace",
+    imgSrc: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=1000",
+    gitURL: "https://github.com/Aastha-kalra",
+    live: "https://forteh.ca",
+    tags: ["Node.js", "Express", "OpenAI API", "MongoDB", "Third-Party APIs", "Mailerlite", "Stripe"],
+    problemSolves: "Connects startups with vetted fractional executives and senior specialists on demand.",
     about:
-      "Crafted a ReactJS shopping cart with brand-based product search, dynamic brand addition, and seamless 'add to bag' functionality for an enhanced user experience. User can modify their products. ",
+      "Talent marketplace backend and integration architecture. Solves the high cost and lengthy hiring cycles of executive recruiting for startups. Engineered AI-powered profile generation using OpenAI API, dynamic industry filtering, calendar scheduling, and hardened security across integrated third-party services.",
   },
-
   {
-    id: `password-${Date.now()}`,
-    name: "CipherKey Generator",
-    category: "*featured",
-    category:"ReactJs",
-    imgSrc: "https://media.gettyimages.com/id/1160411718/video/random-password-generator.jpg?s=640x640&k=20&c=JXRwgmh_hGgZaqz_-G_K7qaarlkHJkNzg6kaDVOgb5w=",
-    gitURL: "https://github.com/Aastha-Kalra/Paasword-generator",
-    live: "https://passwordgenerator9927.netlify.app/",
+    id: "geonursery",
+    name: "Geo Green Nursery",
+    category: "Full Stack",
+    badge: "E-Commerce System",
+    imgSrc: "/Images/geogreen.jpg",
+    gitURL: "https://github.com/Aastha-kalra",
+    live: "https://geogreennursery.co.in",
+    tags: ["Node.js", "Express.js", "MongoDB", "SendGrid APIs", "Cart Engine", "Database Design"],
+    problemSolves: "Digitizes nursery botanical inventory and automated ordering workflows.",
     about:
-      "Developed ReactJS Password Generator: customizable length, add numbers/characters, copy to clipboard feature. Enjoy the experience, and consider giving a star!",
-  },
-
-  {
-    id: `avataar-${Date.now()}`,
-    name: "Create Your Avataar",
-    category: "ReactJs",
-    imgSrc: "https://lh3.googleusercontent.com/3s1ltojdp4SY-2MPuk9vVNX-iauSkKRYGybs8CFwoWPs0p72NnzYLKd2hAGU5R6nf7rssMZAJyaDkj3rUeqG0PH-nA=w640-h400-e365-rj-sc0x00ffffff",
-    gitURL: "https://github.com/Aastha-Kalra/Create-Avataar-UI",
-    live: "https://create-avataar.netlify.app/",
-    about:
-      "Tailwind CSS-enhanced React Avatar Creator: simplified selection, categorized searches, seamless previews, and user-friendly design for a smooth avatar selection experience.",
-  },
-
-  {
-    id: `ui-${Date.now()}`,
-    name: "Linked UI clone",
-    category: "Frontend",
-    imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoshOlxyORcyPziCsl4GWXpjEKyHprBPRR9W9lQj50eg8iqDh0LfrGUs2c2VLSTVH_pZA&usqp=CAU",
-    gitURL: "https://github.com/Aastha-Kalra/Linkedin-UI-clone",
-    live: "https://linkedin-ui.netlify.app/",
-    about:
-      "React.js and Tailwind CSS fuel user profile platform—upload resumes, add work experience, and create professionalism.",
-  },
-
-  {
-    id: `profile-${Date.now()}`,
-    name: "Edit Your Profile",
-    category: "Frontend",
-    imgSrc: "https://help.explaineverything.com/hc/article_attachments/360020997479/File_000__1_.png",
-    gitURL: "https://github.com/Aastha-Kalra/Edit-Your-Profile",
-    live: "https://profile-editing.netlify.app/",
-    about:
-      "React.js and Tailwind CSS power profile editing app—customize like LinkedIn with seamless, intuitive design.",
-  },
-
-  {
-    id: `student-${Date.now()}`,
-    name: "Student Record",
-    category: "ReactJs",
-    imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSron6LURmpLpmJJGzFaO4wOGLF9QhAsMLk_SdmjQ16YYPQ-Bm__IC9Ri6OiiFAoSBY0&usqp=CAU",
-    gitURL: "https://github.com/Aastha-Kalra/StudentRecord",
-    live: "https://students-doc.netlify.app/",
-    about:
-      "Built a responsive ReactJS Student Record Web App: add, delete, update student data, and save in local storage for future use.",
-  },
-
-  {
-    id: `quotes-${Date.now()}`,
-    name: "My Quotes",
-    category: "Frontend",
-    imgSrc: "https://other.sentencedict.com/simage/457/32457.jpg",
-    gitURL: "https://github.com/Aastha-Kalra/Quote-generator-website",
-    live: "https://my-awesome-quotes.netlify.app/",
-    about:
-      "Built a responsive ReactJS Student Record Web App: add, delete, update student data, and save in local storage for future use.",
+      "E-commerce backend and administrative platform for botanical landscaping. Solves offline ordering challenges by delivering scalable RESTful APIs for catalog indexing, dynamic multi-tier cart calculations, direct purchase inquiries, and automated transactional customer notifications via SendGrid.",
   },
 ];
